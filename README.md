@@ -6,5 +6,13 @@
 
 使用jmeter进行并发测试，我自己最大测试了10000个线程，还是能够进行响应并且数据库也没有出现幂等的情况发生，数据没有从重复消费以及商品没有多卖或者剩余。
 
-小伙伴们想看运行图的就可以到images文件夹下进行查看
+运行图：
+
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174826.png)
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174850.png)
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174900.png)
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174907.png)
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174914.jpg)
+![image](https://github.com/HappyBugs/TestSpike/blob/master/image/20190525174922.jpg)
+
 
