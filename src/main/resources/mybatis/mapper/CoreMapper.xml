@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.likuncheng.spike.core.mapper.OrderMapper">
+
+	<insert id="createOrder"
+		parameterType="com.likuncheng.spike.core.entity.Order">
+		insert into
+		`order`(oId,oName,oDesoribe,oUnitPrioe,createTime)
+		values(#{oId},#{oName},#{oDesoribe},#{oUnitPrioe},#{createTime})
+	</insert>
+
+	<update id="updateOrderByOrderId"
+		parameterType="java.lang.String" statementType="CALLABLE">
+		{call
+		updateOrderByOrderId(
+		#{updateTime,mode=IN},
+		#{userId,mode=IN},
+		#{version,mode=IN},
+		#{oId,mode=IN}
+		)}
+	</update>
+
+	<update id="updateOrderPayByOrderId"
+		parameterType="java.lang.String" statementType="CALLABLE">
+		{call
+		updateOrderPayByOrderId(
+		#{isPay,mode=IN},
+		#{payState,mode=IN},
+		#{payToken,mode=IN},
+		#{version,mode=IN},
+		#{oId,mode=IN}
+		)}
+	</update>
+
+	<select id="getMoneyByOutTradeNo"
+		parameterType="java.lang.String">
+		select oUnitPrioe from `order` where oId = #{oId} and
+		oUnitPrioe =
+		#{oUnitPrioe}
+	</select>
+
+	<select id="getOrderByOId" resultMap="getOrderByOIdMap"
+		parameterType="java.lang.String">
+		select * from `order` where oId = #{oId}
+	</select>
+
+	<resultMap type="com.likuncheng.spike.core.entity.Order"
+		id="getOrderByOIdMap">
+		<id property="oId" column="oId" />
+		<result property="oName" column="oName" />
+		<result property="oDesoribe" column="oDesoribe" />
+		<result property="oUnitPrioe" column="oUnitPrioe" />
+		<result property="createTime" column="createTime" />
+		<result property="updateTime" column="updateTime" />
+		<result property="userId" column="userId" />
+		<result property="isPay" column="isPay" />
+		<result property="payState" column="payState" />
+		<result property="payToken" column="payToken" />
+		<result property="version" column="version" />
+	</resultMap>
+
+
+</mapper>
